@@ -112,6 +112,7 @@ def get_preprocessed_data(dataset_path, pretrained_glove_path, num_labels, trend
   df = load_data(dataset_path)
   df = get_category_name(df)
   df = get_time_gap(df, trend)
+  df = df.drop_duplicates(subset=['video_id'])
   df = to_bi(df)
   df = normalize(df)
   df = get_embedded_text(df, pretrained_glove_path)
